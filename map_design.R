@@ -5,8 +5,8 @@ library(nngeo)
 library(ggplot2)
 library(ggthemes)
  
-pts = as.data.frame(read.csv('points.csv', sep = ";"))
-new_points
+pts = as.data.frame(read.csv('points2.csv', sep = ";"))
+pts
 
 #list of points to map
 oldpts <- data.frame(y = c( 33.4,34.7,38.5,39.7,41.7, 39.1, 30.4, 33.7),
@@ -15,11 +15,11 @@ oldpts$id <- seq.int(nrow(pts))
 
 #convert to an sf object and project
 pts <- st_as_sf(pts, coords = c("X", "Y"), crs = 4326)
-pts <- st_transform(pts, 2163)
+pts <- st_transform(pts, 4326)
 
 #find the nearest n neighbors to each point
-neighbors <- 3
-nearest <- st_nn(pts, pts, k = neighbors+1) 
+neighbors <- 5
+nearest <- st_nn(pts, pts, k = neighbors+1, maxdist = 2100000) 
 
 #connect each point to its nearest neighbors
 connect <- st_connect(pts, pts, nearest) %>% st_as_sf
