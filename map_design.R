@@ -29,3 +29,5 @@ ggplot() + theme_map() +
   geom_sf(data = connect, color = 'white') +                                    #connection lines
   geom_sf(data = pts, color = 'white', shape = 1, size = 3) +                   #points, formatted as open circles
   theme(panel.background = element_rect(fill = '#331E47', colour = '#331E47'))  #purple bg
+
+#code by erdavis1
