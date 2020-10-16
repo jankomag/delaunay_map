@@ -6,12 +6,12 @@ library(ggplot2)
 library(ggthemes)
  
 pts = as.data.frame(read.csv('points2.csv', sep = ";"))
-pts
+
 
 #list of points to map
 oldpts <- data.frame(y = c( 33.4,34.7,38.5,39.7,41.7, 39.1, 30.4, 33.7),
                   x = c( -112,-92.3,-121.4,-104.9,-72.6,-75.5, -84.2,-84.4))
-oldpts$id <- seq.int(nrow(pts))
+#oldpts$id <- seq.int(nrow(pts))
 
 #convert to an sf object and project
 pts <- st_as_sf(pts, coords = c("X", "Y"), crs = 4326)
